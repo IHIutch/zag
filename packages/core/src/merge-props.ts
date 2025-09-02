@@ -1,7 +1,7 @@
 import { callAll, isString } from "@zag-js/utils"
 
 interface Props {
-  [key: string | symbol]: any
+  [key: string]: any
 }
 
 const clsx = (...args: (string | undefined)[]) =>
@@ -9,15 +9,6 @@ const clsx = (...args: (string | undefined)[]) =>
     .map((str) => str?.trim?.())
     .filter(Boolean)
     .join(" ")
-
-const ownedBy = (...args: (string | undefined)[]) =>
-  Array.from(
-    new Set(
-      clsx(...args)
-        .split(/\s+/)
-        .filter(Boolean),
-    ),
-  ).join(" ")
 
 const CSS_REGEX = /((?:--)?(?:\w+-?)+)\s*:\s*([^;]*)/g
 
@@ -47,50 +38,46 @@ type TupleTypes<T extends any[]> = T[number]
 
 type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never
 
-export function mergeProps<T extends Props>(...args: Array<T | undefined>): UnionToIntersection<TupleTypes<T[]>> {
-  let result: Props = {}
-
-  for (let props of args) {
-    if (!props) continue
-
-    // Handle string keys
-    for (let key in result) {
-      if (key.startsWith("on") && typeof result[key] === "function" && typeof props[key] === "function") {
-        result[key] = callAll(props[key], result[key])
-        continue
-      }
-
-      if (key === "className" || key === "class") {
-        result[key] = clsx(result[key], props[key])
-        continue
-      }
-
-      if (key === "style") {
-        result[key] = css(result[key], props[key])
-        continue
-      }
-
-      if (key === "data-ownedby") {
-        result[key] = ownedBy(result[key], props[key])
-        continue
-      }
-
-      result[key] = props[key] !== undefined ? props[key] : result[key]
-    }
-
-    // Add props from b that are not in a
-    for (let key in props) {
-      if (result[key] === undefined) {
-        result[key] = props[key]
-      }
-    }
-
-    // Handle symbol keys (for Svelte attachments)
-    const symbols = Object.getOwnPropertySymbols(props)
-    for (let symbol of symbols) {
-      result[symbol] = props[symbol]
-    }
-  }
-
-  return result as any
+interface MergePropsOptions {
+  eventPrefix?: string
 }
+
+export type MergePropsFunction = <T extends Props>(...args: T[]) => UnionToIntersection<TupleTypes<T[]>>
+
+export function createMergeProps({ eventPrefix = "on" }: MergePropsOptions = {}): MergePropsFunction {
+  return function mergeProps<T extends Props>(...args: T[]): UnionToIntersection<TupleTypes<T[]>> {
+    let result: Props = {}
+
+    for (let props of args) {
+      for (let key in result) {
+        if (key.startsWith(eventPrefix) && typeof result[key] === "function" && typeof props[key] === "function") {
+          result[key] = callAll(props[key], result[key])
+          continue
+        }
+
+        if (key === "className" || key === "class") {
+          result[key] = clsx(result[key], props[key])
+          continue
+        }
+
+        if (key === "style") {
+          result[key] = css(result[key], props[key])
+          continue
+        }
+
+        result[key] = props[key] !== undefined ? props[key] : result[key]
+      }
+
+      // Add props from b that are not in a
+      for (let key in props) {
+        if (result[key] === undefined) {
+          result[key] = props[key]
+        }
+      }
+    }
+
+    return result as any
+  }
+}
+
+export const mergeProps = createMergeProps()
