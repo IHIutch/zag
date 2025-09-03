@@ -12,6 +12,7 @@ const examples = {
   solid: { dir: "solid-ts", port: "3002" },
   svelte: { dir: "svelte-ts", port: "3003" },
   preact: { dir: "preact-ts", port: "3004" },
+  lit: { dir: "lit-ts", port: "3005" },
 }
 
 export function getWebServer(): WebServer {
