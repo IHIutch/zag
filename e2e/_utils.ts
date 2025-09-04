@@ -1,18 +1,5 @@
 import AxeBuilder from "@axe-core/playwright"
 import { expect, type Locator, type Page } from "@playwright/test"
-import { AxeResults, type RunOptions, type ElementContext } from "axe-core"
-import { run } from "axe-core"
-
-export async function a11y(page: Page, selector = "[data-part=root]", disableRules: string[] = []) {
-  await page.waitForSelector(selector)
-
-  const results = await new AxeBuilder({ page: page as any })
-    .disableRules(["color-contrast", ...disableRules])
-    .include(selector)
-    .analyze()
-
-  expect(results.violations).toEqual([])
-}
 
 export type FrameworkContext = "shadow-dom" | "light-dom"
 
@@ -24,34 +11,18 @@ export function getPart(parent: Page | Locator, hostSelector: string, partName: 
   return parent.locator(`${hostSelector} ${partSelector}`)
 }
 
-/**
- * Performs a targeted accessibility scan on the shadow root of a specific component.
- * @param page The Playwright Page object
- * @param hostSelector A CSS selector for the shadow host element
- */
-export async function a11yInShadow(page: Page, hostSelector: string | undefined, selector = "[data-part=root]") {
-  // // Inject axe-core library into the page
-  // await page.addScriptTag({
-  //   path: require.resolve("axe-core/axe.min.js"),
-  // })
-
-  // const results = await page.evaluate((selector) => {
-  //   const host = document.querySelector(selector)
-  //   if (!host || !host.shadowRoot) {
-  //     throw new Error(`Host element '${selector}' not found or has no shadowRoot.`)
-  //   }
-
-  //   // Run axe directly on the shadowRoot with minimal configuration
-  //   return window.axe.run(host.shadowRoot)
-  // }, hostSelector)
-
-  // expect(results.violations).toEqual([])
-
+export async function a11y(
+  page: Page,
+  selector = "[data-part=root]",
+  disableRulesOrHost: string[] | string = [],
+) {
   await page.waitForSelector(selector)
 
-  let selection = new AxeBuilder({ page: page as any }).disableRules(["color-contrast"])
+  const disableRules = Array.isArray(disableRulesOrHost) ? disableRulesOrHost : []
+  const hostSelector = typeof disableRulesOrHost === "string" ? disableRulesOrHost : undefined
+  let selection = new AxeBuilder({ page: page as any }).disableRules(["color-contrast", ...disableRules])
 
-  if (hostSelector) {
+  if (hostSelector && FRAMEWORK_CONTEXT === "shadow-dom") {
     selection = selection.include(hostSelector)
   }
   if (selector) {
