@@ -1,10 +1,18 @@
 import AxeBuilder from "@axe-core/playwright"
 import { expect, type Locator, type Page } from "@playwright/test"
 
-export type FrameworkContext = "shadow-dom" | "light-dom"
+export type DomMode = "shadow-dom" | "light-dom"
 
-export const FRAMEWORK_CONTEXT: FrameworkContext =
-  (process.env.TEST_FRAMEWORK as FrameworkContext) || (process.env.FRAMEWORK === "lit" ? "shadow-dom" : "light-dom")
+// The context is determined by environment variables at test runtime
+// VITE_DOM_MODE is the primary control (matches client-side behavior)
+// Examples:
+// - `VITE_DOM_MODE=shadow-dom FRAMEWORK=react npx playwright test` (force Shadow DOM in React)
+// - `VITE_DOM_MODE=light-dom FRAMEWORK=lit npx playwright test` (force Light DOM in Lit)
+// - `FRAMEWORK=lit npx playwright test` (default Lit behavior: Shadow DOM)
+export const DOM_MODE: DomMode =
+  process.env.VITE_DOM_MODE === "light-dom" ? "light-dom" : process.env.FRAMEWORK === "lit" ? "shadow-dom" : "light-dom"
+
+console.log(`Running E2E tests in '${DOM_MODE}' context.`)
 
 export function getPart(parent: Page | Locator, hostSelector: string, partName: string): Locator {
   const partSelector = `[part="${partName}"], [data-part="${partName}"]`
@@ -22,7 +30,7 @@ export async function a11y(
   const hostSelector = typeof disableRulesOrHost === "string" ? disableRulesOrHost : undefined
   let selection = new AxeBuilder({ page: page as any }).disableRules(["color-contrast", ...disableRules])
 
-  if (hostSelector && FRAMEWORK_CONTEXT === "shadow-dom") {
+  if (hostSelector && DOM_MODE === "shadow-dom") {
     selection = selection.include(hostSelector)
   }
   if (selector) {
@@ -43,7 +51,7 @@ export const testid = (part: string) => `[data-testid=${esc(part)}]`
  * @returns Combined selector string
  */
 export function withHost(componentHost: string | undefined, target: string): string {
-  return FRAMEWORK_CONTEXT === "shadow-dom" && componentHost ? `${componentHost} ${target}` : target
+  return DOM_MODE === "shadow-dom" && componentHost ? `${componentHost} ${target}` : target
 }
 
 export const controls = (page: Page) => {
