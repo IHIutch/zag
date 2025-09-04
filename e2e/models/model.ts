@@ -4,7 +4,10 @@ import { a11y, clickControls, clickOutside, clickViz, controls, repeat, retry } 
 export class Model {
   private readonly consoleMessages: string[] = []
 
-  constructor(public page: Page) {
+  constructor(
+    public page: Page,
+    private shadowHost?: string,
+  ) {
     page.on("console", (msg) => {
       this.consoleMessages.push(msg.text())
     })
@@ -31,7 +34,7 @@ export class Model {
   }
 
   checkAccessibility(selector?: string) {
-    return a11y(this.page, selector)
+    return a11y(this.page, selector, this.shadowHost)
   }
 
   pressKey(key: string, times = 1) {
