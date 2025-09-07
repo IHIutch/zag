@@ -1,5 +1,5 @@
 import { expect, type Page } from "@playwright/test"
-import { a11y, clickControls, clickOutside, clickViz, controls, repeat, retry } from "../_utils"
+import { a11y, clickControls, clickOutside, clickViz, controls, DOM_MODE, repeat, retry } from "../_utils"
 
 export class Model {
   private readonly consoleMessages: string[] = []
@@ -15,6 +15,10 @@ export class Model {
     page.on("pageerror", (error) => {
       this.consoleMessages.push(error.message)
     })
+  }
+
+  get host() {
+    return DOM_MODE === "shadow-dom" && this.shadowHost ? this.page.locator(this.shadowHost) : this.page
   }
 
   get controls() {

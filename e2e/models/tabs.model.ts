@@ -1,5 +1,5 @@
 import { expect, type Page } from "@playwright/test"
-import { a11y, rect, testid, withHost } from "../_utils"
+import { rect, testid } from "../_utils"
 import { Model } from "./model"
 
 const INDICATOR_POSITION_TOLERANCE = 2
@@ -18,11 +18,11 @@ export class TabsModel extends Model {
   }
 
   private getTabTrigger = (id: string) => {
-    return this.page.locator(withHost(shadowHost, testid(`${id}-tab`)))
+    return this.host.locator(testid(`${id}-tab`))
   }
 
   private getTabContent = (id: string) => {
-    return this.page.locator(withHost(shadowHost, testid(`${id}-tab-panel`)))
+    return this.host.locator(testid(`${id}-tab-panel`))
   }
 
   private getIndicator = () => {
