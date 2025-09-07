@@ -5,8 +5,8 @@ let I: MenuModel
 
 test.describe("menu option", () => {
   test.beforeEach(async ({ page }) => {
-    I = new MenuModel(page)
-    await I.goto("/menu/options")
+    I = new MenuModel(page, "menu-options-page")
+    await I.goto("/menu-options")
   })
 
   test("mouse, should check/uncheck radio item", async () => {
@@ -70,6 +70,7 @@ test.describe("menu option", () => {
     // open the menu
     await I.focusTrigger()
     await I.pressKey("Enter")
+    await I.seeDropdownIsFocused()
 
     // // navigate the 'Phone' item
     await I.pressKey("ArrowDown", 4)
