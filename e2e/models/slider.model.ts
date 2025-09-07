@@ -1,14 +1,13 @@
 import { expect, type Page } from "@playwright/test"
-import { a11y, rect } from "../_utils"
+import { rect } from "../_utils"
 import { Model } from "./model"
 
 export class SliderModel extends Model {
-  constructor(public page: Page) {
-    super(page)
-  }
-
-  checkAccessibility() {
-    return a11y(this.page)
+  constructor(
+    public page: Page,
+    shadowHost = "slider-page",
+  ) {
+    super(page, shadowHost)
   }
 
   goto(url = "/slider/basic") {
@@ -16,7 +15,7 @@ export class SliderModel extends Model {
   }
 
   getThumb(index = 0) {
-    return this.page.locator(`[data-scope='slider'][data-part='thumb'][data-index='${index}']`)
+    return this.host.locator(`[data-scope='slider'][data-part='thumb'][data-index='${index}']`)
   }
 
   get control() {
@@ -24,11 +23,11 @@ export class SliderModel extends Model {
   }
 
   get track() {
-    return this.page.locator("[data-scope='slider'][data-part='track']")
+    return this.host.locator("[data-scope='slider'][data-part='track']")
   }
 
   get output() {
-    return this.page.locator("[data-scope='slider'][data-part='value-text']")
+    return this.host.locator("[data-scope='slider'][data-part='value-text']")
   }
 
   focusThumb(index?: number) {
