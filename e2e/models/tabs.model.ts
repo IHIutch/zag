@@ -1,18 +1,16 @@
 import { expect, type Page } from "@playwright/test"
-import { a11y, rect, testid } from "../_utils"
+import { a11y, rect, testid, withHost } from "../_utils"
 import { Model } from "./model"
 
 const INDICATOR_POSITION_TOLERANCE = 2
 
 type Rect = Awaited<ReturnType<typeof rect>>
 
+const shadowHost = "tabs-page"
+
 export class TabsModel extends Model {
   constructor(public page: Page) {
-    super(page)
-  }
-
-  checkAccessibility() {
-    return a11y(this.page)
+    super(page, shadowHost)
   }
 
   goto() {
@@ -20,11 +18,11 @@ export class TabsModel extends Model {
   }
 
   private getTabTrigger = (id: string) => {
-    return this.page.locator(testid(`${id}-tab`))
+    return this.page.locator(withHost(shadowHost, testid(`${id}-tab`)))
   }
 
   private getTabContent = (id: string) => {
-    return this.page.locator(testid(`${id}-tab-panel`))
+    return this.page.locator(withHost(shadowHost, testid(`${id}-tab-panel`)))
   }
 
   private getIndicator = () => {
