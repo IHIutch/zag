@@ -125,51 +125,21 @@ importers:
       '@zag-js/checkbox':
         specifier: workspace:*
         version: link:../../packages/machines/checkbox
-      '@zag-js/collapsible':
-        specifier: workspace:*
-        version: link:../../packages/machines/collapsible
       '@zag-js/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@zag-js/dialog':
-        specifier: workspace:*
-        version: link:../../packages/machines/dialog
       '@zag-js/lit':
         specifier: workspace:*
         version: link:../../packages/frameworks/lit
-      '@zag-js/menu':
-        specifier: workspace:*
-        version: link:../../packages/machines/menu
-      '@zag-js/popover':
-        specifier: workspace:*
-        version: link:../../packages/machines/popover
-      '@zag-js/radio-group':
-        specifier: workspace:*
-        version: link:../../packages/machines/radio-group
       '@zag-js/shared':
         specifier: workspace:*
         version: link:../../shared
-      '@zag-js/slider':
-        specifier: workspace:*
-        version: link:../../packages/machines/slider
       '@zag-js/stringify-state':
         specifier: workspace:*
         version: link:../../packages/utilities/stringify-state
-      '@zag-js/switch':
-        specifier: workspace:*
-        version: link:../../packages/machines/switch
-      '@zag-js/tabs':
-        specifier: workspace:*
-        version: link:../../packages/machines/tabs
-      '@zag-js/toggle':
-        specifier: workspace:*
-        version: link:../../packages/machines/toggle
       '@zag-js/toggle-group':
         specifier: workspace:*
         version: link:../../packages/machines/toggle-group
-      form-serialize:
-        specifier: 0.7.2
-        version: 0.7.2
       lit:
         specifier: 3.3.1
         version: 3.3.1

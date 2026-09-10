@@ -8,40 +8,14 @@ import "./main.css"
 import "./components/toolbar"
 import "./components/state-visualizer"
 
-// Import all page components
+// The example suite intentionally ships only components covered by Lit E2E tests.
 import "./pages/accordion"
 import "./pages/checkbox"
-import "./pages/collapsible"
-import "./pages/dialog"
-import "./pages/dialog-nested"
-import "./pages/menu"
-import "./pages/menu-nested"
-import "./pages/menu-options"
-import "./pages/popover"
-import "./pages/radio-group"
-import "./pages/range-slider"
-import "./pages/slider"
-import "./pages/switch"
-import "./pages/tabs"
-import "./pages/toggle"
 import "./pages/toggle-group"
 
 const routes = [
   ["/accordion", "Accordion", "accordion-page"],
   ["/checkbox", "Checkbox", "checkbox-page"],
-  ["/collapsible", "Collapsible", "collapsible-page"],
-  ["/dialog", "Dialog", "dialog-page"],
-  ["/dialog-nested", "Dialog (nested)", "dialog-nested-page"],
-  ["/menu", "Menu", "menu-page"],
-  ["/menu-nested", "Menu (nested)", "menu-nested-page"],
-  ["/menu-options", "Menu options", "menu-options-page"],
-  ["/popover", "Popover", "popover-page"],
-  ["/radio-group", "Radio group", "radio-group-page"],
-  ["/range-slider", "Range slider", "range-slider-page"],
-  ["/slider", "Slider", "slider-page"],
-  ["/switch", "Switch", "switch-page"],
-  ["/tabs", "Tabs", "tabs-page"],
-  ["/toggle", "Toggle", "toggle-page"],
   ["/toggle-group", "Toggle group", "toggle-group-page"],
 ] as const
 
