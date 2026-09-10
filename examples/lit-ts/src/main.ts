@@ -8,14 +8,46 @@ import "./main.css"
 import "./components/toolbar"
 import "./components/state-visualizer"
 
-// The example suite intentionally ships only components covered by Lit E2E tests.
+// Import all page components
 import "./pages/accordion"
 import "./pages/checkbox"
+import "./pages/collapsible"
+import "./pages/dialog"
+import "./pages/dialog-nested"
+import "./pages/menu"
+import "./pages/menu-nested"
+import "./pages/menu-options"
+import "./pages/menu-overflow"
+import "./pages/popover"
+import "./pages/popover-single-tab-stop"
+import "./pages/popover-trigger-last"
+import "./pages/radio-group"
+import "./pages/range-slider"
+import "./pages/slider"
+import "./pages/switch"
+import "./pages/tabs"
+import "./pages/toggle"
 import "./pages/toggle-group"
 
 const routes = [
   ["/accordion", "Accordion", "accordion-page"],
   ["/checkbox", "Checkbox", "checkbox-page"],
+  ["/collapsible", "Collapsible", "collapsible-page"],
+  ["/dialog/nested", "Dialog (nested)", "dialog-nested-page"],
+  ["/dialog", "Dialog", "dialog-page"],
+  ["/menu/nested", "Menu (nested)", "menu-nested-page"],
+  ["/menu/options", "Menu options", "menu-options-page"],
+  ["/menu/overflow", "Menu (overflow)", "menu-overflow-page"],
+  ["/menu", "Menu", "menu-page"],
+  ["/popover/single-tab-stop", "Popover (single tab stop)", "popover-single-tab-stop-page"],
+  ["/popover/trigger-last", "Popover (trigger last)", "popover-trigger-last-page"],
+  ["/popover", "Popover", "popover-page"],
+  ["/radio-group", "Radio group", "radio-group-page"],
+  ["/range-slider", "Range slider", "range-slider-page"],
+  ["/slider", "Slider", "slider-page"],
+  ["/switch", "Switch", "switch-page"],
+  ["/tabs", "Tabs", "tabs-page"],
+  ["/toggle", "Toggle", "toggle-page"],
   ["/toggle-group", "Toggle group", "toggle-group-page"],
 ] as const
 

@@ -45,7 +45,7 @@ export const normalizeProps = createNormalizer((props: Record<string, unknown>) 
     if (value === undefined) continue
     key = propMap[key] ?? key
     if (key === "style" && typeof value === "object" && value !== null) {
-      normalized.style = toStyleString(value as Record<string, unknown>)
+      normalized.style = value
       continue
     }
     if (key.startsWith("on") && typeof value === "function") {

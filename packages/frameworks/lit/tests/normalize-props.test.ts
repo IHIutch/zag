@@ -18,7 +18,7 @@ describe("normalizeProps", () => {
       ".value": "x",
       "aria-hidden": "true",
       class: "x",
-      style: "margin-top:2px;",
+      style: { marginTop: "2px" },
     })
   })
 

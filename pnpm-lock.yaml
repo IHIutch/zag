@@ -116,30 +116,57 @@ importers:
 
   examples/lit-ts:
     dependencies:
-      '@open-wc/lit-helpers':
-        specifier: 0.7.0
-        version: 0.7.0(lit@3.3.1)
       '@zag-js/accordion':
         specifier: workspace:*
         version: link:../../packages/machines/accordion
       '@zag-js/checkbox':
         specifier: workspace:*
         version: link:../../packages/machines/checkbox
+      '@zag-js/collapsible':
+        specifier: workspace:*
+        version: link:../../packages/machines/collapsible
       '@zag-js/core':
         specifier: workspace:*
         version: link:../../packages/core
+      '@zag-js/dialog':
+        specifier: workspace:*
+        version: link:../../packages/machines/dialog
       '@zag-js/lit':
         specifier: workspace:*
         version: link:../../packages/frameworks/lit
+      '@zag-js/menu':
+        specifier: workspace:*
+        version: link:../../packages/machines/menu
+      '@zag-js/popover':
+        specifier: workspace:*
+        version: link:../../packages/machines/popover
+      '@zag-js/radio-group':
+        specifier: workspace:*
+        version: link:../../packages/machines/radio-group
       '@zag-js/shared':
         specifier: workspace:*
         version: link:../../shared
+      '@zag-js/slider':
+        specifier: workspace:*
+        version: link:../../packages/machines/slider
       '@zag-js/stringify-state':
         specifier: workspace:*
         version: link:../../packages/utilities/stringify-state
+      '@zag-js/switch':
+        specifier: workspace:*
+        version: link:../../packages/machines/switch
+      '@zag-js/tabs':
+        specifier: workspace:*
+        version: link:../../packages/machines/tabs
+      '@zag-js/toggle':
+        specifier: workspace:*
+        version: link:../../packages/machines/toggle
       '@zag-js/toggle-group':
         specifier: workspace:*
         version: link:../../packages/machines/toggle-group
+      form-serialize:
+        specifier: 0.7.2
+        version: 0.7.2
       lit:
         specifier: 3.3.1
         version: 3.3.1
@@ -5870,11 +5897,6 @@ packages:
         optional: true
       rollup-plugin-visualizer:
         optional: true
-
-  '@open-wc/lit-helpers@0.7.0':
-    resolution: {integrity: sha512-4NBlx5ve0EvZplCRJbESm0MdMbRCw16alP2y76KAAAwzmFFXXrUj5hFwhw55+sSg5qaRRx6sY+s7usKgnNo3TQ==}
-    peerDependencies:
-      lit: ^2.0.0 || ^3.0.0
 
   '@oxc-minify/binding-android-arm-eabi@0.131.0':
     resolution: {integrity: sha512-yLa7y9jjJgUeUUMm6AtjmBIQzK1YU5sYcNJnVVtr6WtoWu5SpuNDZ8u6cl/dhn0g/oQgVlf+E+8WJfsExt8R+Q==}
@@ -15377,10 +15399,6 @@ snapshots:
       - vti
       - vue-tsc
       - yaml
-
-  '@open-wc/lit-helpers@0.7.0(lit@3.3.1)':
-    dependencies:
-      lit: 3.3.1
 
   '@oxc-minify/binding-android-arm-eabi@0.131.0':
     optional: true
