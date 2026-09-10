@@ -1,18 +1,13 @@
-import { html, unsafeCSS } from "lit"
+import { html } from "lit"
 import { customElement } from "lit/decorators.js"
 import { spread } from "@open-wc/lit-helpers"
 import * as dialog from "@zag-js/dialog"
-import styleComponent from "@zag-js/shared/src/css/dialog.css?inline"
-import styleLayout from "@zag-js/shared/src/css/layout.css?inline"
-import stylePage from "./page.css?inline"
 import { MachineController, normalizeProps } from "@zag-js/lit"
 import { nanoid } from "nanoid"
 import { PageElement } from "../lib/page-element"
 
 @customElement("dialog-nested-page")
 export class DialogNestedPage extends PageElement {
-  static styles = unsafeCSS(styleComponent + styleLayout + stylePage)
-
   private machine1Id = nanoid(5)
   private machine2Id = nanoid(5)
 
@@ -56,21 +51,21 @@ export class DialogNestedPage extends PageElement {
                       <button data-testid="trigger-2" ${spread(childDialog.getTriggerProps())}>Open Nested</button>
 
                       ${
-                      childDialog.open
-                        ? html`
-                            <div ${spread(childDialog.getBackdropProps())}></div>
-                            <div data-testid="positioner-2" ${spread(childDialog.getPositionerProps())}>
-                              <div ${spread(childDialog.getContentProps())}>
-                                <h2 ${spread(childDialog.getTitleProps())}>Nested</h2>
-                                <button data-testid="close-2" ${spread(childDialog.getCloseTriggerProps())}>X</button>
-                                <button data-testid="special-close" @click=${() => parentDialog.setOpen(false)}>
-                                  Close Dialog 1
-                                </button>
+                        childDialog.open
+                          ? html`
+                              <div ${spread(childDialog.getBackdropProps())}></div>
+                              <div data-testid="positioner-2" ${spread(childDialog.getPositionerProps())}>
+                                <div ${spread(childDialog.getContentProps())}>
+                                  <h2 ${spread(childDialog.getTitleProps())}>Nested</h2>
+                                  <button data-testid="close-2" ${spread(childDialog.getCloseTriggerProps())}>X</button>
+                                  <button data-testid="special-close" @click=${() => parentDialog.setOpen(false)}>
+                                    Close Dialog 1
+                                  </button>
+                                </div>
                               </div>
-                            </div>
-                          `
-                        : ""
-                    }
+                            `
+                          : ""
+                      }
                     </div>
                   </div>
                 `

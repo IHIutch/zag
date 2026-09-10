@@ -1,11 +1,8 @@
-import { html, unsafeCSS } from "lit"
+import { html } from "lit"
 import { customElement } from "lit/decorators.js"
 import { spread } from "@open-wc/lit-helpers"
 import * as toggleGroup from "@zag-js/toggle-group"
 import { toggleGroupControls, toggleGroupData } from "@zag-js/shared"
-import styleComponent from "@zag-js/shared/src/css/toggle-group.css?inline"
-import styleLayout from "@zag-js/shared/src/css/layout.css?inline"
-import stylePage from "./page.css?inline"
 import { MachineController, normalizeProps } from "@zag-js/lit"
 import { nanoid } from "nanoid"
 import { ControlsController } from "../lib/controls-controller"
@@ -13,8 +10,6 @@ import { PageElement } from "../lib/page-element"
 
 @customElement("toggle-group-page")
 export class ToggleGroupPage extends PageElement {
-  static styles = unsafeCSS(styleComponent + styleLayout + stylePage)
-
   private controls = new ControlsController(this, toggleGroupControls)
   private machineId = nanoid(5)
 

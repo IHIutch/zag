@@ -23,19 +23,31 @@ export class MachineController<T extends MachineSchema> implements ReactiveContr
     host.addController(this)
   }
 
-  hostConnected() {
-    if (this.started) {
-      this.machine = new VanillaMachine(this.machineConfig, this.getProps)
-      this.started = false
-    }
+  private recreateMachine() {
+    this.unsubscribe?.()
+    this.unsubscribe = undefined
+    this.machine.stop()
+    this.machine = new VanillaMachine(this.machineConfig, this.getProps)
     this.unsubscribe = this.machine.subscribe(() => this.host.requestUpdate())
   }
 
+  hostConnected() {
+    if (this.started) {
+      this.recreateMachine()
+      this.started = false
+    } else {
+      this.unsubscribe = this.machine.subscribe(() => this.host.requestUpdate())
+    }
+  }
+
   hostUpdate() {
-    if (!this.started) return
     const nextProps = this.getProps()
     if (isEqual(this.previousProps, nextProps)) return
     this.previousProps = nextProps
+    if (!this.started) {
+      this.recreateMachine()
+      return
+    }
     this.machine.updateProps(this.getProps)
   }
 

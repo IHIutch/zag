@@ -1,11 +1,8 @@
-import { html, unsafeCSS } from "lit"
+import { html } from "lit"
 import { customElement } from "lit/decorators.js"
 import { spread } from "@open-wc/lit-helpers"
 import * as zagSwitch from "@zag-js/switch"
 import { switchControls } from "@zag-js/shared"
-import styleComponent from "@zag-js/shared/src/css/switch.css?inline"
-import styleLayout from "@zag-js/shared/src/css/layout.css?inline"
-import stylePage from "./page.css?inline"
 import { MachineController, normalizeProps } from "@zag-js/lit"
 import { nanoid } from "nanoid"
 import { ControlsController } from "../lib/controls-controller"
@@ -13,8 +10,6 @@ import { PageElement } from "../lib/page-element"
 
 @customElement("switch-page")
 export class SwitchPage extends PageElement {
-  static styles = unsafeCSS(styleComponent + styleLayout + stylePage)
-
   private controls = new ControlsController(this, switchControls)
   private machineId = nanoid(5)
 

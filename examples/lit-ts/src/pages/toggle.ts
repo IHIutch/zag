@@ -1,18 +1,13 @@
-import { html, unsafeCSS } from "lit"
+import { html } from "lit"
 import { customElement } from "lit/decorators.js"
 import { spread } from "@open-wc/lit-helpers"
 import * as toggle from "@zag-js/toggle"
-import styleComponent from "@zag-js/shared/src/css/toggle.css?inline"
-import styleLayout from "@zag-js/shared/src/css/layout.css?inline"
-import stylePage from "./page.css?inline"
 import { MachineController, normalizeProps } from "@zag-js/lit"
 import { Bold, createElement } from "lucide"
 import { PageElement } from "../lib/page-element"
 
 @customElement("toggle-page")
 export class TogglePage extends PageElement {
-  static styles = unsafeCSS(styleComponent + styleLayout + stylePage)
-
   private machine = new MachineController(this, toggle.machine)
 
   render() {

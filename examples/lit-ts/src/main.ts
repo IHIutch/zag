@@ -1,7 +1,6 @@
-import { LitElement, html } from "lit"
+import { LitElement } from "lit"
 import { customElement, property } from "lit/decorators.js"
-import { routesData } from "@zag-js/shared"
-
+import { html, unsafeStatic } from "lit/static-html.js"
 import "@zag-js/shared/src/style.css"
 import "./main.css"
 
@@ -27,8 +26,24 @@ import "./pages/tabs"
 import "./pages/toggle"
 import "./pages/toggle-group"
 
-// Sort alphabetically in place (Why not in shared/?)
-routesData.sort((a, b) => a.label.localeCompare(b.label))
+const routes = [
+  ["/accordion", "Accordion", "accordion-page"],
+  ["/checkbox", "Checkbox", "checkbox-page"],
+  ["/collapsible", "Collapsible", "collapsible-page"],
+  ["/dialog", "Dialog", "dialog-page"],
+  ["/dialog-nested", "Dialog (nested)", "dialog-nested-page"],
+  ["/menu", "Menu", "menu-page"],
+  ["/menu-nested", "Menu (nested)", "menu-nested-page"],
+  ["/menu-options", "Menu options", "menu-options-page"],
+  ["/popover", "Popover", "popover-page"],
+  ["/radio-group", "Radio group", "radio-group-page"],
+  ["/range-slider", "Range slider", "range-slider-page"],
+  ["/slider", "Slider", "slider-page"],
+  ["/switch", "Switch", "switch-page"],
+  ["/tabs", "Tabs", "tabs-page"],
+  ["/toggle", "Toggle", "toggle-page"],
+  ["/toggle-group", "Toggle group", "toggle-group-page"],
+] as const
 
 @customElement("zag-app")
 export class ZagApp extends LitElement {
@@ -61,42 +76,10 @@ export class ZagApp extends LitElement {
   }
 
   private renderContent() {
-    switch (this.currentPath) {
-      case "/accordion":
-        return html`<accordion-page class="component-page"></accordion-page>`
-      case "/checkbox":
-        return html`<checkbox-page class="component-page"></checkbox-page>`
-      case "/collapsible":
-        return html`<collapsible-page class="component-page"></collapsible-page>`
-      case "/dialog":
-        return html`<dialog-page class="component-page"></dialog-page>`
-      case "/dialog-nested":
-        return html`<dialog-nested-page class="component-page"></dialog-nested-page>`
-      case "/menu":
-        return html`<menu-page class="component-page"></menu-page>`
-      case "/menu-nested":
-        return html`<menu-nested-page class="component-page"></menu-nested-page>`
-      case "/menu-options":
-        return html`<menu-options-page class="component-page"></menu-options-page>`
-      case "/popover":
-        return html`<popover-page class="component-page"></popover-page>`
-      case "/radio-group":
-        return html`<radio-group-page class="component-page"></radio-group-page>`
-      case "/range-slider":
-        return html`<range-slider-page class="component-page"></range-slider-page>`
-      case "/slider":
-        return html`<slider-page class="component-page"></slider-page>`
-      case "/switch":
-        return html`<switch-page class="component-page"></switch-page>`
-      case "/tabs":
-        return html`<tabs-page class="component-page"></tabs-page>`
-      case "/toggle":
-        return html`<toggle-page class="component-page"></toggle-page>`
-      case "/toggle-group":
-        return html`<toggle-group-page class="component-page"></toggle-group-page>`
-      default:
-        return this.renderHome()
-    }
+    const route = routes.find(([path]) => this.currentPath === path || this.currentPath.startsWith(`${path}/`))
+    return route
+      ? html`<${unsafeStatic(route[2])} class="component-page"></${unsafeStatic(route[2])}>`
+      : this.renderHome()
   }
 
   private renderHome() {
@@ -109,28 +92,6 @@ export class ZagApp extends LitElement {
   }
 
   render() {
-    const routes = routesData.filter((route) =>
-      // Only show routes we have implemented
-      [
-        "/accordion",
-        "/checkbox",
-        "/collapsible",
-        "/dialog",
-        "/dialog-nested",
-        "/menu",
-        "/menu-nested",
-        "/menu-options",
-        "/popover",
-        "/radio-group",
-        "/range-slider",
-        "/slider",
-        "/switch",
-        "/tabs",
-        "/toggle",
-        "/toggle-group",
-      ].includes(route.path),
-    )
-
     return html`
       <div class="page">
         <aside class="nav">
@@ -146,16 +107,16 @@ export class ZagApp extends LitElement {
             Home
           </a>
           ${routes.map(
-            (route) => html`
+            ([path, label]) => html`
               <a
-                href=${route.path}
-                ?data-active=${this.currentPath === route.path}
+                href=${path}
+                ?data-active=${this.currentPath === path}
                 @click=${(e: Event) => {
                   e.preventDefault()
-                  this.navigate(route.path)
+                  this.navigate(path)
                 }}
               >
-                ${route.label}
+                ${label}
               </a>
             `,
           )}

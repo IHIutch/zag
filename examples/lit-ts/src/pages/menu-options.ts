@@ -1,11 +1,8 @@
-import { html, unsafeCSS } from "lit"
+import { html } from "lit"
 import { customElement, state } from "lit/decorators.js"
 import { spread } from "@open-wc/lit-helpers"
 import * as menu from "@zag-js/menu"
 import { menuOptionData, menuControls } from "@zag-js/shared"
-import styleComponent from "@zag-js/shared/src/css/menu.css?inline"
-import styleLayout from "@zag-js/shared/src/css/layout.css?inline"
-import stylePage from "./page.css?inline"
 import { MachineController, normalizeProps } from "@zag-js/lit"
 import { nanoid } from "nanoid"
 import { ControlsController } from "../lib/controls-controller"
@@ -13,8 +10,6 @@ import { PageElement } from "../lib/page-element"
 
 @customElement("menu-options-page")
 export class MenuOptionsPage extends PageElement {
-  static styles = unsafeCSS(styleComponent + styleLayout + stylePage)
-
   private controls = new ControlsController(this, menuControls)
   private machineId = nanoid(5)
 

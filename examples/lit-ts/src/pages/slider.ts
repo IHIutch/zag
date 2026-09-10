@@ -1,11 +1,8 @@
-import { html, unsafeCSS } from "lit"
+import { html } from "lit"
 import { customElement } from "lit/decorators.js"
 import { spread } from "@open-wc/lit-helpers"
 import * as slider from "@zag-js/slider"
 import { sliderControls } from "@zag-js/shared"
-import styleComponent from "@zag-js/shared/src/css/slider.css?inline"
-import styleLayout from "@zag-js/shared/src/css/layout.css?inline"
-import stylePage from "./page.css?inline"
 import { MachineController, normalizeProps } from "@zag-js/lit"
 import { nanoid } from "nanoid"
 import serialize from "form-serialize"
@@ -14,8 +11,6 @@ import { PageElement } from "../lib/page-element"
 
 @customElement("slider-page")
 export class SliderPage extends PageElement {
-  static styles = unsafeCSS(styleComponent + styleLayout + stylePage)
-
   private controls = new ControlsController(this, sliderControls)
   private machineId = nanoid(5)
 

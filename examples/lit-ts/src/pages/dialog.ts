@@ -1,18 +1,13 @@
-import { html, unsafeCSS } from "lit"
+import { html } from "lit"
 import { customElement } from "lit/decorators.js"
 import { spread } from "@open-wc/lit-helpers"
 import * as dialog from "@zag-js/dialog"
-import styleComponent from "@zag-js/shared/src/css/dialog.css?inline"
-import styleLayout from "@zag-js/shared/src/css/layout.css?inline"
-import stylePage from "./page.css?inline"
 import { MachineController, normalizeProps } from "@zag-js/lit"
 import { nanoid } from "nanoid"
 import { PageElement } from "../lib/page-element"
 
 @customElement("dialog-page")
 export class DialogPage extends PageElement {
-  static styles = unsafeCSS(styleComponent + styleLayout + stylePage)
-
   private machineId = nanoid(5)
 
   private machine = new MachineController(this, dialog.machine, () => ({

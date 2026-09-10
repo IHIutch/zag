@@ -116,192 +116,42 @@ importers:
 
   examples/lit-ts:
     dependencies:
-      '@internationalized/date':
-        specifier: 3.9.0
-        version: 3.9.0
       '@open-wc/lit-helpers':
         specifier: 0.7.0
         version: 0.7.0(lit@3.3.1)
       '@zag-js/accordion':
         specifier: workspace:*
         version: link:../../packages/machines/accordion
-      '@zag-js/anatomy':
-        specifier: workspace:*
-        version: link:../../packages/anatomy
-      '@zag-js/anatomy-icons':
-        specifier: workspace:*
-        version: link:../../packages/anatomy-icons
-      '@zag-js/angle-slider':
-        specifier: workspace:*
-        version: link:../../packages/machines/angle-slider
-      '@zag-js/aria-hidden':
-        specifier: workspace:*
-        version: link:../../packages/utilities/aria-hidden
-      '@zag-js/async-list':
-        specifier: workspace:*
-        version: link:../../packages/machines/async-list
-      '@zag-js/auto-resize':
-        specifier: workspace:*
-        version: link:../../packages/utilities/auto-resize
-      '@zag-js/avatar':
-        specifier: workspace:*
-        version: link:../../packages/machines/avatar
-      '@zag-js/carousel':
-        specifier: workspace:*
-        version: link:../../packages/machines/carousel
       '@zag-js/checkbox':
         specifier: workspace:*
         version: link:../../packages/machines/checkbox
-      '@zag-js/clipboard':
-        specifier: workspace:*
-        version: link:../../packages/machines/clipboard
       '@zag-js/collapsible':
         specifier: workspace:*
         version: link:../../packages/machines/collapsible
-      '@zag-js/collection':
-        specifier: workspace:*
-        version: link:../../packages/utilities/collection
-      '@zag-js/color-picker':
-        specifier: workspace:*
-        version: link:../../packages/machines/color-picker
-      '@zag-js/color-utils':
-        specifier: workspace:*
-        version: link:../../packages/utilities/color-utils
-      '@zag-js/combobox':
-        specifier: workspace:*
-        version: link:../../packages/machines/combobox
       '@zag-js/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@zag-js/date-picker':
-        specifier: workspace:*
-        version: link:../../packages/machines/date-picker
-      '@zag-js/date-utils':
-        specifier: workspace:*
-        version: link:../../packages/utilities/date-utils
       '@zag-js/dialog':
         specifier: workspace:*
         version: link:../../packages/machines/dialog
-      '@zag-js/dismissable':
-        specifier: workspace:*
-        version: link:../../packages/utilities/dismissable
-      '@zag-js/docs':
-        specifier: workspace:*
-        version: link:../../packages/docs
-      '@zag-js/dom-query':
-        specifier: workspace:*
-        version: link:../../packages/utilities/dom-query
-      '@zag-js/editable':
-        specifier: workspace:*
-        version: link:../../packages/machines/editable
-      '@zag-js/file-upload':
-        specifier: workspace:*
-        version: link:../../packages/machines/file-upload
-      '@zag-js/file-utils':
-        specifier: workspace:*
-        version: link:../../packages/utilities/file-utils
-      '@zag-js/floating-panel':
-        specifier: workspace:*
-        version: link:../../packages/machines/floating-panel
-      '@zag-js/focus-trap':
-        specifier: workspace:*
-        version: link:../../packages/utilities/focus-trap
-      '@zag-js/focus-visible':
-        specifier: workspace:*
-        version: link:../../packages/utilities/focus-visible
-      '@zag-js/highlight-word':
-        specifier: workspace:*
-        version: link:../../packages/utilities/highlight-word
-      '@zag-js/hover-card':
-        specifier: workspace:*
-        version: link:../../packages/machines/hover-card
-      '@zag-js/i18n-utils':
-        specifier: workspace:*
-        version: link:../../packages/utilities/i18n-utils
-      '@zag-js/interact-outside':
-        specifier: workspace:*
-        version: link:../../packages/utilities/interact-outside
-      '@zag-js/json-tree-utils':
-        specifier: workspace:*
-        version: link:../../packages/utilities/json-tree-utils
-      '@zag-js/listbox':
-        specifier: workspace:*
-        version: link:../../packages/machines/listbox
       '@zag-js/lit':
         specifier: workspace:*
         version: link:../../packages/frameworks/lit
-      '@zag-js/live-region':
-        specifier: workspace:*
-        version: link:../../packages/utilities/live-region
       '@zag-js/menu':
         specifier: workspace:*
         version: link:../../packages/machines/menu
-      '@zag-js/navigation-menu':
-        specifier: workspace:*
-        version: link:../../packages/machines/navigation-menu
-      '@zag-js/number-input':
-        specifier: workspace:*
-        version: link:../../packages/machines/number-input
-      '@zag-js/pagination':
-        specifier: workspace:*
-        version: link:../../packages/machines/pagination
-      '@zag-js/password-input':
-        specifier: workspace:*
-        version: link:../../packages/machines/password-input
-      '@zag-js/pin-input':
-        specifier: workspace:*
-        version: link:../../packages/machines/pin-input
       '@zag-js/popover':
         specifier: workspace:*
         version: link:../../packages/machines/popover
-      '@zag-js/popper':
-        specifier: workspace:*
-        version: link:../../packages/utilities/popper
-      '@zag-js/presence':
-        specifier: workspace:*
-        version: link:../../packages/machines/presence
-      '@zag-js/progress':
-        specifier: workspace:*
-        version: link:../../packages/machines/progress
-      '@zag-js/qr-code':
-        specifier: workspace:*
-        version: link:../../packages/machines/qr-code
       '@zag-js/radio-group':
         specifier: workspace:*
         version: link:../../packages/machines/radio-group
-      '@zag-js/rating-group':
-        specifier: workspace:*
-        version: link:../../packages/machines/rating-group
-      '@zag-js/rect-utils':
-        specifier: workspace:*
-        version: link:../../packages/utilities/rect
-      '@zag-js/remove-scroll':
-        specifier: workspace:*
-        version: link:../../packages/utilities/remove-scroll
-      '@zag-js/scroll-snap':
-        specifier: workspace:*
-        version: link:../../packages/utilities/scroll-snap
-      '@zag-js/select':
-        specifier: workspace:*
-        version: link:../../packages/machines/select
       '@zag-js/shared':
         specifier: workspace:*
         version: link:../../shared
-      '@zag-js/signature-pad':
-        specifier: workspace:*
-        version: link:../../packages/machines/signature-pad
       '@zag-js/slider':
         specifier: workspace:*
         version: link:../../packages/machines/slider
-      '@zag-js/splitter':
-        specifier: workspace:*
-        version: link:../../packages/machines/splitter
-      '@zag-js/steps':
-        specifier: workspace:*
-        version: link:../../packages/machines/steps
-      '@zag-js/store':
-        specifier: workspace:*
-        version: link:../../packages/store
       '@zag-js/stringify-state':
         specifier: workspace:*
         version: link:../../packages/utilities/stringify-state
@@ -311,36 +161,12 @@ importers:
       '@zag-js/tabs':
         specifier: workspace:*
         version: link:../../packages/machines/tabs
-      '@zag-js/tags-input':
-        specifier: workspace:*
-        version: link:../../packages/machines/tags-input
-      '@zag-js/timer':
-        specifier: workspace:*
-        version: link:../../packages/machines/timer
-      '@zag-js/toast':
-        specifier: workspace:*
-        version: link:../../packages/machines/toast
       '@zag-js/toggle':
         specifier: workspace:*
         version: link:../../packages/machines/toggle
       '@zag-js/toggle-group':
         specifier: workspace:*
         version: link:../../packages/machines/toggle-group
-      '@zag-js/tooltip':
-        specifier: workspace:*
-        version: link:../../packages/machines/tooltip
-      '@zag-js/tour':
-        specifier: workspace:*
-        version: link:../../packages/machines/tour
-      '@zag-js/tree-view':
-        specifier: workspace:*
-        version: link:../../packages/machines/tree-view
-      '@zag-js/types':
-        specifier: workspace:*
-        version: link:../../packages/types
-      '@zag-js/utils':
-        specifier: workspace:*
-        version: link:../../packages/utilities/core
       form-serialize:
         specifier: 0.7.2
         version: 0.7.2
@@ -350,9 +176,6 @@ importers:
       lucide:
         specifier: 0.542.0
         version: 0.542.0
-      match-sorter:
-        specifier: 8.1.0
-        version: 8.1.0
       nanoid:
         specifier: ^5.1.5
         version: 5.1.16
@@ -5771,9 +5594,6 @@ packages:
   '@internationalized/date@3.12.3':
     resolution: {integrity: sha512-fuLX+3ZKLsxI73y8b01EG/WjHb6gE6weCqlfawPO27kBWGMh9G1yH6Csv1uU7/cac9H2GHmOMt6CjmuQ1aia4Q==}
 
-  '@internationalized/date@3.9.0':
-    resolution: {integrity: sha512-yaN3brAnHRD+4KyyOsJyk49XUvj2wtbNACSqg0bz3u8t2VuzhC8Q5dfRnrSxjnnbDb+ienBnkn1TzQfE154vyg==}
-
   '@internationalized/number@3.6.7':
     resolution: {integrity: sha512-3ji1fcrT+FPAK86UqEhB/psHixYo6niWPJtt7+qRaYFynt/BaJG8GhAPimtWUpEiVSTq8ZM8L5psMxGquiB/Vg==}
 
@@ -10732,9 +10552,6 @@ packages:
     engines: {node: '>=0.10.0'}
     hasBin: true
 
-  match-sorter@8.1.0:
-    resolution: {integrity: sha512-0HX3BHPixkbECX+Vt7nS1vJ6P2twPgGTU3PMXjWrl1eyVCL24tFHeyYN1FN5RKLzve0TyzNI9qntqQGbebnfPQ==}
-
   match-sorter@8.3.0:
     resolution: {integrity: sha512-8Py1GbZi5zsclYSFcPAH4H5xfTbeD0bOREA7qP/t8bW4MbOSlPl8sbqHOedEV7O+Bxyvxm6xs/v6BXJGe+JDNA==}
 
@@ -14930,10 +14747,6 @@ snapshots:
       '@swc/helpers': 0.5.23
 
   '@internationalized/date@3.12.3':
-    dependencies:
-      '@swc/helpers': 0.5.23
-
-  '@internationalized/date@3.9.0':
     dependencies:
       '@swc/helpers': 0.5.23
 
@@ -20579,11 +20392,6 @@ snapshots:
       remarkable: 1.7.4
       repeat-string: 1.6.1
       strip-color: 0.1.0
-
-  match-sorter@8.1.0:
-    dependencies:
-      '@babel/runtime': 7.29.7
-      remove-accents: 0.5.0
 
   match-sorter@8.3.0:
     dependencies:
