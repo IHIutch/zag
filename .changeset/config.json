@@ -7,7 +7,7 @@
     }
   ],
   "commit": false,
-  "fixed": [["@zag-js/**"]],
+  "fixed": [["@zag-js/**", "!@zag-js/lit"]],
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
@@ -17,6 +17,7 @@
   "ignore": [
     "@zag-js/shared",
     "next-app",
+    "lit-ts",
     "next-ts",
     "nuxt-ts",
     "solid-ts",

@@ -1,0 +1,20 @@
+{
+  "name": "@zag-js/lit",
+  "version": "0.0.0",
+  "description": "The Lit wrapper for Zag",
+  "keywords": ["ui-machines", "state-machines", "zag", "lit"],
+  "author": "Segun Adebayo <sage@adebayosegun.com>",
+  "homepage": "https://github.com/chakra-ui/zag#readme",
+  "license": "MIT",
+  "repository": "https://github.com/chakra-ui/zag/tree/main/packages/frameworks/lit",
+  "sideEffects": false,
+  "files": ["dist"],
+  "publishConfig": { "access": "public" },
+  "bugs": { "url": "https://github.com/chakra-ui/zag/issues" },
+  "dependencies": { "@zag-js/core": "workspace:*", "@zag-js/types": "workspace:*", "@zag-js/utils": "workspace:*", "@zag-js/vanilla": "workspace:*" },
+  "devDependencies": { "@types/jsdom": "^30.0.0", "clean-package": "2.2.0", "jsdom": "^30.0.0", "lit": "3.3.1", "vitest": "^4.1.2" },
+  "peerDependencies": { "lit": ">=3.0.0" },
+  "scripts": { "build": "tsup", "lint": "eslint src", "typecheck": "tsc --noEmit", "prepack": "clean-package", "postpack": "clean-package restore", "test": "vitest" },
+  "clean-package": "../../../clean-package.config.json",
+  "main": "src/index.ts"
+}
